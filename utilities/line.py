@@ -1,0 +1,199 @@
+import plotly.graph_objects as go
+from utilities import utilities
+
+gold = go.Figure(
+    layout=go.Layout(
+        template='plotly_dark',
+        margin={'t': 20, 'b': 0, 'l': 60, 'r': 30},
+        hovermode='x',
+        spikedistance=-1,
+        xaxis={
+            'showgrid': False,
+            'showline': True
+        },
+        yaxis={
+            'showgrid': True,
+            'showticklabels': True
+        }
+    )
+)
+gold.add_trace(
+    go.Scatter(
+        name='Gold',
+        x=utilities.gold_api['Date'],
+        y=utilities.gold_api['USD (PM)'],
+        mode='lines',
+        fill='tozeroy',
+        line=dict(
+            width=1,
+            color='gold'  
+        ),
+        hovertemplate=
+            '<b>%{y}</b>'
+    )
+)
+gold.update_layout(
+    xaxis=dict(
+        rangeselector=dict(
+            buttons=list(
+                [
+                    dict(
+                        count=1,
+                        label='1M',
+                        step='month',
+                        stepmode='backward'
+                        ),
+                    dict(
+                        count=3,
+                        label='3M',
+                        step='month',
+                        stepmode='backward'
+                        ),
+                    dict(
+                        count=6,
+                        label='6M',
+                        step='month',
+                        stepmode='backward'
+                        ),
+                    dict(
+                        count=1,
+                        label='YTD',
+                        step='year',
+                        stepmode='todate'
+                        ),
+                    dict(
+                        count=1,
+                        label='1Y',
+                        step='year',
+                        stepmode='backward'
+                        ),                          
+                    dict(
+                        count=5,
+                        label='5Y',
+                        step='year',
+                        stepmode='backward'
+                        ),                                            
+                    dict(
+                        label='All',
+                        step='all'
+                        )
+                ]
+            ),
+            font=dict(
+                color='black'
+            )
+        ),
+        rangeslider=dict(
+            visible=True
+        ),
+        type='date', 
+        showspikes=True,
+        spikedash='solid',
+        spikemode='across+toaxis',
+        spikethickness=1,
+        spikesnap='cursor',
+        showline=True,
+    ),    
+    yaxis=dict(
+        tickprefix='$',
+        range=[1000,2025]
+    )
+)
+
+silver = go.Figure(
+    layout=go.Layout(
+        template='plotly_dark',
+        margin={'t': 20, 'b': 0, 'l': 60, 'r': 30},
+        hovermode='x',
+        spikedistance=-1,
+        xaxis={
+            'showgrid': False,
+            'showline': True
+        },
+        yaxis={
+            'showgrid': True,
+            'showticklabels': True
+        }
+    )
+)
+silver.add_trace(
+    go.Scatter(
+        name='Siver',
+        x=utilities.silver_api['Date'],
+        y=utilities.silver_api['USD'],
+        mode='lines',
+        fill='tozeroy',
+        line=dict(
+            width=1,
+            color='silver'  
+        ),
+        hovertemplate=
+            '<b>%{y}</b>'
+    )
+)
+silver.update_layout(
+    xaxis=dict(
+        rangeselector=dict(
+            buttons=list(
+                [
+                    dict(
+                        count=1,
+                        label='1M',
+                        step='month',
+                        stepmode='backward'
+                        ),
+                    dict(
+                        count=3,
+                        label='3M',
+                        step='month',
+                        stepmode='backward'
+                        ),
+                    dict(
+                        count=6,
+                        label='6M',
+                        step='month',
+                        stepmode='backward'
+                        ),
+                    dict(
+                        count=1,
+                        label='YTD',
+                        step='year',
+                        stepmode='todate'
+                        ),
+                    dict(
+                        count=1,
+                        label='1Y',
+                        step='year',
+                        stepmode='backward'
+                        ),                          
+                    dict(
+                        count=5,
+                        label='5Y',
+                        step='year',
+                        stepmode='backward'
+                        ),                                      
+                    dict(
+                        label='All',
+                        step='all'
+                        )
+                ]
+            ),
+            font=dict(
+                color='black'
+            )
+        ),
+        rangeslider=dict(
+            visible=True
+        ),
+        type='date',
+        showspikes=True,
+        spikedash='solid',
+        spikemode='across+toaxis',
+        spikethickness=1,
+        spikesnap='cursor',
+        showline=True,
+    ),    
+    yaxis=dict(
+        tickprefix='$',
+    )
+)
